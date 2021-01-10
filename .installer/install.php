@@ -17,6 +17,11 @@ return call_user_func(static function() {
   $filesystem = new Filesystem();
   $variableReplacer = new FramedStringReplace();
   $componentName = basename(shell_exec("git config --get remote.origin.url"), '.git');
+  $variables = [
+    'vendor' => 'codenamephp',
+    'componentName' => $componentName,
+    'namespace' => implode('\\', array_merge(['de', 'codenamephp'], explode('.', $componentName)))
+  ];
 
   (new StepExecutor(
     new SequentialCollection(
@@ -27,16 +32,12 @@ return call_user_func(static function() {
         ),
         __DIR__ . '/templates',
         __DIR__ . '/..',
-        [
-          'vendor' => 'codenamephp',
-          'componentName' => $componentName,
-          'namespace' => implode('\\', array_merge(['de', 'codenamephp'], explode('.', $componentName)))
-        ]
+        $variables
       ),
-      new DeleteFilesAndFolders($filesystem, [
+      new DeleteFilesAndFolders($variableReplacer, $filesystem, [
         __DIR__ . '/../src/.gitkeep',
         __DIR__
-      ]),
+      ], $variables),
     )
   ))->run();
 });
