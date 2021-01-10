@@ -16,7 +16,7 @@ return call_user_func(static function() {
 
   $filesystem = new Filesystem();
   $variableReplacer = new FramedStringReplace();
-  $componentName = basename(shell_exec("git config --get remote.origin.url"), '.git');
+  $componentName = basename(trim(shell_exec("git config --get remote.origin.url")), '.git');
   $variables = [
     'vendor' => 'codenamephp',
     'componentName' => $componentName,
