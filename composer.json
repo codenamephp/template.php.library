@@ -11,7 +11,7 @@
   ],
   "require": {
     "php": "^8.0",
-    "codenamephp/installer": "dev-main"
+    "codenamephp/installer": "^1.0"
   },
   "scripts": {
     "run-installer": "composer install && php .installer/install.php && composer update && composer phive-update"
