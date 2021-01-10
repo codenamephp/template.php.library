@@ -20,24 +20,21 @@ return call_user_func(static function() {
   $variables = [
     'vendor' => 'codenamephp',
     'componentName' => $componentName,
-    'namespace' => implode('\\', array_merge(['de', 'codenamephp'], explode('.', $componentName)))
+    'namespace' => implode('\\', array_merge(['de', 'codenamephp'], explode('.', $componentName))),
   ];
 
   (new StepExecutor(
     new SequentialCollection(
       new CopyTemplateFolder(
         new \de\codenamephp\installer\templateCopy\RecursiveIterator(
-          new CreateDirectoryWithSymfonyFilesystem($filesystem,$variableReplacer),
+          new CreateDirectoryWithSymfonyFilesystem($filesystem, $variableReplacer),
           new RenderWithTwigAndDumpWithSymfonyFilesystem($filesystem, $variableReplacer, new Environment(new FilesystemLoader('/', '/')))
         ),
         __DIR__ . '/templates',
-        __DIR__ . '/..',
+        dirname(__DIR__),
         $variables
       ),
-      new DeleteFilesAndFolders($variableReplacer, $filesystem, [
-        __DIR__ . '/../src/.gitkeep',
-        __DIR__
-      ], $variables),
+      new DeleteFilesAndFolders($variableReplacer, $filesystem, [dirname(__DIR__) . '/src/.gitkeep', __DIR__], $variables),
     )
   ))->run();
 });
