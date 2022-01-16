@@ -7,13 +7,9 @@
 Template repository to quickstart library development.
 
 ## Prerequisites
-- PHP 8.1 or later (https://php.net)
-- Git (https://git-scm.com) available as global `git` command
-- Composer (https://getcomposer.org) available as global `composer` command
-- Phive (https://phar.io) available as global `phive` command
+- Docker and Docker Compose
 
-If one of the CLI tools is not available as global command you may have to change the `.installer/install.php` or `composer.json`
-to adapt to your environment.
+Everything else runs in the docker container.
 
 ## Usage
 
