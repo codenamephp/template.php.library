@@ -21,6 +21,7 @@ return call_user_func(static function() {
     'vendor' => 'codenamephp',
     'componentName' => $componentName,
     'namespace' => implode('\\', array_merge(['de', 'codenamephp'], explode('.', $componentName))),
+    'phpVersion' => '8.1',
   ];
 
   (new StepExecutor(
