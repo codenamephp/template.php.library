@@ -1,5 +1,5 @@
 {
-  "name": "{{vendor}}/{{componentName}}",
+  "name": "{{vendor}}/{{componentName|lower}}",
   "description": "",
   "type": "library",
   "license": "Apache-2.0",
