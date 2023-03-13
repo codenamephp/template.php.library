@@ -17,7 +17,7 @@ on:
 
 jobs:
   ci:
-    uses: codenamephp/workflows.php/.github/workflows/ci.yml@main
+    uses: codenamephp/workflows.php/.github/workflows/ci.yml@1
     with:
       php-versions: '["{% endverbatim %}{{phpVersion}}{% verbatim %}"]'
 {% endverbatim %}
